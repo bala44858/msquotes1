@@ -26,11 +26,20 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
+
 //            Navigation to QUotes page
             binding.textView.setOnClickListener {
                 Handler(Looper.getMainLooper()).postDelayed({
+                    if(binding.userName.text.toString()!=""){
+                        var move = Intent(this,trackingQuote::class.java)
+                        move.putExtra("userName", binding.userName.text.toString())
+                        startActivity(move)
+//                        setContentView(R.layout.activity_tracking_quote)
 
-                    startActivity(Intent(this, trackingQuote::class.java))
+                    }else{
+                        Toast.makeText(applicationContext,"please enter the user-name",Toast.LENGTH_SHORT).show()
+                    }
+
                 }, 10)
 
             }
@@ -39,7 +48,7 @@ class MainActivity : AppCompatActivity() {
 
 
         db=FirebaseDatabase.getInstance().getReference("quotes")
-            binding.sendbutton.setOnClickListener {
+        binding.sendbutton.setOnClickListener {
                 if (binding.userName.text.toString() !=""){
                     if (binding.quotes.text.toString()!="") {
                         val simpleDate = SimpleDateFormat("dd-M-yyyy")

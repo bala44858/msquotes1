@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.widget.TextView
+import com.example.msquotes1.databinding.ActivityMainBinding
 
 class flashscrean : AppCompatActivity() {
 //    navigate to ,main screan function
@@ -15,7 +17,7 @@ class flashscrean : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
             startActivity(Intent(this,MainActivity::class.java))
 
-        }, 2000)
+        }, 1000)
 
     }
 }
